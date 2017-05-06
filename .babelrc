@@ -1,0 +1,8 @@
+{
+  "presets": ["react-app", ["env", {
+    "targets": {
+      "browser": "> 1%"
+    }
+  }]],
+  "plugins": ["transform-class-properties"]
+}
