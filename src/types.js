@@ -6,7 +6,7 @@ export type MentionComponentProps = {
 
 export type SuggestionsComponentProps = {
   mention: string,
-  select: Function,
+  suggestions: Array<any>,
   selected: number,
 };
 
