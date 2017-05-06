@@ -38,7 +38,9 @@
     "react": "^15.5.4"
   },
   "dependencies": {
-    "babel-plugin-transform-class-properties": "^6.24.1"
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "positions": "^1.6.1",
+    "react-portal": "^3.1.0"
   },
   "keywords": [
     "slate"
