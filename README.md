@@ -19,14 +19,14 @@ import { Editor } from 'slate';
 import MentionsPlugin from 'slate-mentions';
 
 const mentions = MentionsPlugin({
-	Mention: MentionComponent,
-	Suggestions: SuggestionsComponent,
+  Mention: MentionComponent,
+  Suggestions: SuggestionsComponent,
 });
 
 <Editor
   plugins={[mentions]}
-	suggestions={suggestions}
-	onMentionSearch={this.updateSuggestions}
+  suggestions={suggestions}
+  onMentionSearch={this.updateSuggestions}
 />
 ```
 
@@ -38,21 +38,21 @@ After adding the plugin to the plugins array you have to pass the current `sugge
 
 ```JS
 <Editor
-	plugins={[mention]}
-	suggestions={this.state.suggestions}
+  plugins={[mention]}
+  suggestions={this.state.suggestions}
   onMentionSearch={this.updateSuggestions}
 />
 
 updateSuggestions = (text) => {
-	this.setState({
-		suggestions: null
-	});
-	fetch(`api.com/v1/people?filter=${text}`)
-		.then(possibleMentions => {
-			this.setState({
-				suggestions: possibleMentions,
-			})
-		})
+  this.setState({
+    suggestions: null
+  });
+  fetch(`api.com/v1/people?filter=${text}`)
+    .then(possibleMentions => {
+      this.setState({
+        suggestions: possibleMentions,
+      })
+    })
 }
 ```
 
