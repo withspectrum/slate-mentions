@@ -21,26 +21,26 @@ import MentionsPlugin from 'slate-mentions';
 const mentions = MentionsPlugin({
   Mention: (props) => <span {...props.attributes}>{props.children}</span>,
   Suggestions: (props) => (
-		<div>
-			{props.suggestions.map((suggestion, index) => (
-				<span
-					style={{
-						background: index === props.selected ? 'red' : 'grey',
-					}}
-				>
-					{suggestion}
-				</span>
-			))}
-		</div>
+    <div>
+      {props.suggestions.map((suggestion, index) => (
+        <span
+          style={{
+            background: index === props.selected ? 'red' : 'grey',
+          }}
+        >
+          {suggestion}
+        </span>
+      ))}
+    </div>
   ),
 });
 
 const suggestions = ['max', 'brian', 'bryn'];
 
 updateSuggestions = (text) => {
-	this.setState({
-		suggestions: suggestions.filter(suggestion => suggestion.indexOf(text) > -1),
-	});
+  this.setState({
+    suggestions: suggestions.filter(suggestion => suggestion.indexOf(text) > -1),
+  });
 }
 
 <Editor
@@ -65,14 +65,14 @@ After passing these two options to the plugin and adding it to the plugins array
 
 ```JS
 updateSuggestions = (text) => {
-	// Tell slate-mentions you're currently loading suggestions
+  // Tell slate-mentions you're currently loading suggestions
   this.setState({
     suggestions: null
   });
-	// Fetch the suggestions
+  // Fetch the suggestions
   fetch(`api.com/v1/people?filter=${text}`)
     .then(possibleMentions => {
-			// Set the state
+      // Set the state
       this.setState({
         suggestions: possibleMentions,
       })
