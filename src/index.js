@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import { findDOMNode } from 'slate';
 
 import Portal from './lib/Portal';
 import {
@@ -51,9 +50,6 @@ const MentionsPlugin = (options?: Options): SlatePlugin => {
           const selected =
             (suggestions && selectedIndex % suggestions.length) || 0;
 
-          // const node = state.startBlock.getMarksAtRange(state.selection).findLast(mark => mark.type === 'mention');
-          // console.log(node)
-          // console.log(findDOMNode(node))
           portal = (
             <Portal node={state.startBlock}>
               <Suggestions
