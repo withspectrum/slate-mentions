@@ -80,6 +80,32 @@ updateSuggestions = (text) => {
 }
 ```
 
+## Serialization
+
+To serialize your editor state the mentions plugin provides `serializationRules` adapted for your custom `Mention` component:
+
+```JS
+import { Html } from 'slate';
+import MentionPlugin from 'slate-mentions';
+
+// Create the plugin as usual
+const mentions = MentionPlugin({
+  Mention: MentionComponent,
+  Suggestions: SuggestionsComponent,
+});
+
+const { serialize } = new Html({
+  // Add the mentions serialization rules after any of your custom ones
+  rules: [...mentions.serializationRules]
+});
+
+// Get your current editor state as HTML 🎉
+serialize(editor.state);
+
+// You can also get your current editor state as React components:
+serialize(editor.state, { render: false });
+```
+
 ## License
 
 Licensed under the MIT License, Copyright ©️ 2017 Maximilian Stoiber. See [LICENSE.md](LICENSE.md) for more information.

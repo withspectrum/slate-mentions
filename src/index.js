@@ -11,6 +11,7 @@ import {
   SELECTED_MENTION_INDEX_KEY,
 } from './constants';
 import { currentlyInMention, findNearestMention, nearestAt } from './utils';
+import createSerializationRules from './create-serialization-rules';
 import type { Options, SlatePlugin } from './types';
 
 const MentionsPlugin = (options?: Options): SlatePlugin => {
@@ -21,18 +22,21 @@ const MentionsPlugin = (options?: Options): SlatePlugin => {
   }
   const { Mention, Suggestions } = options;
 
-  return {
-    schema: {
-      nodes: {
-        default: ({ attributes, children }) => (
-          <span {...attributes}>{children}</span>
-        ),
-        line: ({ attributes, children }) => (
-          <span {...attributes}>{children}</span>
-        ),
-        mention: Mention,
-      },
+  const schema = {
+    nodes: {
+      default: ({ attributes, children }) => (
+        <span {...attributes}>{children}</span>
+      ),
+      line: ({ attributes, children }) => (
+        <span {...attributes}>{children}</span>
+      ),
+      mention: Mention,
     },
+  };
+
+  return {
+    schema,
+    serializationRules: createSerializationRules(schema),
     render(props: Object, state: Object, editor: Object) {
       let portal = null;
       if (currentlyInMention(state)) {
