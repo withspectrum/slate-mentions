@@ -15,7 +15,12 @@ export type Options = {
   Suggestions: ReactClass<SuggestionsComponentProps>,
 };
 
-type SlateSchema = {
+export type SerializationRule = {
+  deserialize?: () => ReactClass<>,
+  serialize?: () => ReactClass<>,
+};
+
+export type SlateSchema = {
   nodes?: Object,
   marks?: Object,
   rules?: Array<any>,
