@@ -37,9 +37,12 @@ const MentionsPlugin = (options?: Options): SlatePlugin => {
         // If we are currently in a mention with some text render the suggestion portal
         if (mention) {
           const { suggestions } = editor.props;
-          const selectedIndex = Math.abs(editor.state[SELECTED_MENTION_INDEX_KEY]);
+          const selectedIndex = Math.abs(
+            editor.state[SELECTED_MENTION_INDEX_KEY]
+          );
           // Guard selectedIndex to be within the length of the suggestions
-          const selected = (suggestions && selected % suggestions.length) || 0
+          const selected =
+            (suggestions && selectedIndex % suggestions.length) || 0;
           portal = (
             <Portal node={state.endText}>
               <Suggestions
