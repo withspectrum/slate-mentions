@@ -19,7 +19,7 @@ const MentionsPlugin = (options?: Options): SlatePlugin => {
       '[Slate] [MentionsPlugin] Please provide the Mention and Suggestions components via the options.'
     );
   }
-  const { Mention, Suggestions } = options;
+  const { Mention, Suggestions, onlyIn, ignoreIn } = options;
 
   return {
     schema: {
@@ -62,6 +62,11 @@ const MentionsPlugin = (options?: Options): SlatePlugin => {
       );
     },
     onKeyDown(event: KeyboardEvent, data: any, state: Object, editor: Object) {
+      const { startBlock } = state;
+      const { type } = startBlock;
+      if (onlyIn && !onlyIn.includes(type)) return;
+      if (ignoreIn && ignoreIn.includes(type)) return;
+
       switch (event.which) {
         // If the user types an @ we add a mention mark if we're not already in one
         case AT_SIGN: {

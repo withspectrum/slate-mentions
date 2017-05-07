@@ -55,6 +55,10 @@ The plugin has two required options:
 - `Mention`: The component to render a mention mark in the editor. This gets two props (`attributes` and `children`), and `props.attributes` must be attached to the DOM node. (just like any other Slate mark)
 - `Suggestions`: The component to render the suggestions as a list. This is already in a portal that's positioned next to the mention. This component gets three props: `suggestions` (the list of suggestions), `selected` (the index of the currently selected mention via keyboard shortcuts) and `mention`. (the search text)
 
+You can also set the following optional options:
+- `ignoreIn`: An array of block types to **not** trigger mentions inside.
+- `onlyIn` — An array of block types to **only** trigger mentions inside.
+
 
 After passing these two options to the plugin and adding it to the plugins array you have to pass two special props to the Slate `Editor` component:
 
