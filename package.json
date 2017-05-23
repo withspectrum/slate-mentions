@@ -38,6 +38,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "positions": "^1.6.1",
     "react": "^15.5.4",
+    "react-dom": "^15.5.4",
     "react-portal": "^3.1.0",
     "slate": "^0.19.29"
   },
