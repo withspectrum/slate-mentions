@@ -1,6 +1,11 @@
 # `slate-mentions`
 
-**ALPHA, USE AT YOUR OWN RISK**
+**WE'VE SWITCHED TO DRAFT.JS, SO THIS REPO IS NO LONGER MAINTAINED!** If you want to develop this further please fork the repo and start working it. When you've made substantial improvements ping me (@mxstbr) on Twitter and I'd be happy to link to your fork from here.
+
+If this is your first time in this repo, this project was never more than a proof of concept/alpha version. It doesn't work well, I'd not recommend using it.
+
+<details>
+  <summary>Click if you want to see the old documentation</summary>
 
 Add support for mentions to your Slate editor.
 
@@ -79,6 +84,10 @@ updateSuggestions = (text) => {
     })
 }
 ```
+
+</details>
+
+<br />
 
 ## License
 
