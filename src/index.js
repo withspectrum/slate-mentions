@@ -23,7 +23,13 @@ const MentionsPlugin = (options?: Options): SlatePlugin => {
 
   return {
     schema: {
-      marks: {
+      nodes: {
+        default: ({ attributes, children }) => (
+          <span {...attributes}>{children}</span>
+        ),
+        line: ({ attributes, children }) => (
+          <span {...attributes}>{children}</span>
+        ),
         mention: Mention,
       },
     },
@@ -43,8 +49,9 @@ const MentionsPlugin = (options?: Options): SlatePlugin => {
           // Guard selectedIndex to be within the length of the suggestions
           const selected =
             (suggestions && selectedIndex % suggestions.length) || 0;
+
           portal = (
-            <Portal node={state.endText}>
+            <Portal node={state.startBlock}>
               <Suggestions
                 selected={selected}
                 suggestions={editor.props.suggestions}
@@ -66,7 +73,7 @@ const MentionsPlugin = (options?: Options): SlatePlugin => {
         // If the user types an @ we add a mention mark if we're not already in one
         case AT_SIGN: {
           if (currentlyInMention(state)) return;
-          return state.transform().addMark('mention').apply();
+          return state.transform().insertBlock('mention').focus().apply();
         }
         // If we're in a mention and either space or enter are pressed
         // jump out of the mention and insert a space
@@ -92,7 +99,8 @@ const MentionsPlugin = (options?: Options): SlatePlugin => {
               .transform()
               .deleteBackward(mentionLength)
               .insertText(text)
-              .removeMark('mention')
+              .splitBlock()
+              .setBlock('default')
               .insertText(' ')
               .focus()
               .apply();
