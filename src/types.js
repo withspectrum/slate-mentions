@@ -13,6 +13,8 @@ export type SuggestionsComponentProps = {
 export type Options = {
   Mention: ReactClass<MentionComponentProps>,
   Suggestions: ReactClass<SuggestionsComponentProps>,
+  onlyIn: Array<string>,
+  ignoreIn: Array<string>,
 };
 
 type SlateSchema = {
